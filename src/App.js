@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import "./App.css";
+import Box from "./Box";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      boxArray: new Array(9).fill(),
+    };
+  }
+  render() {
+    return (
+      <div className="App">
+        <div className="main">
+          <h2>Color App</h2>
+          <div className="boxes">
+            {this.state.boxArray.map((box, index) => {
+              return <Box key={index} />;
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
